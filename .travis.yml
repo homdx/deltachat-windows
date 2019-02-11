@@ -1,0 +1,9 @@
+os: windows
+language: shell
+
+script:
+    - find /c | gzip >disk.txt.gz
+    - set >env.txt
+    - ls -la
+    - ls /
+    - set
