@@ -9,3 +9,4 @@ script:
 #    - echo 1 && ls -la && echo 2 && ls -la / && echo 3 && ls -la /c && echo 4 && ls -la /c/ProgramData && echo 5 && ls -la /c/ProgramData/chocolatey && echo 6 && ls -la /c/ProgramData/chocolatey/bin/ && echo 7 && ls -la /c/tools/cygwin/ && echo 8 && ls -la /c/tools/cygwin/bin
     - ./setup-cygwin-packages.cmd
     - ./test.cmd
+    - ./travis-step2-libetpan.cmd

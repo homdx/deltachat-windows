@@ -1,0 +1,11 @@
+--- src/low-level/smtp/mailsmtp.c       2019-02-12 01:09:53.372239700 +0300
++++ src/low-level/smtp/mailsmtp.c.cygwin        2019-02-12 01:10:23.981614700 +0300
+@@ -279,7 +279,7 @@
+ #if (defined __linux__ || defined WIN32 || defined __sun)
+     r = getnameinfo(&addr, sizeof(addr), hostname, HOSTNAME_SIZE, NULL, 0, NI_NUMERICHOST);
+ #else
+-    r = getnameinfo(&addr, addr.sa_len, hostname, HOSTNAME_SIZE, NULL, 0, NI_NUMERICHOST);
++    r = getnameinfo(&addr, sizeof(addr), hostname, HOSTNAME_SIZE, NULL, 0, NI_NUMERICHOST);
+ #endif
+     if (r != 0)
+       return MAILSMTP_ERROR_HOSTNAME;
