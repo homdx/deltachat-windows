@@ -2,8 +2,10 @@ os: windows
 language: shell
 
 script:
-    - find /c | gzip >disk.txt.gz
-    - set >env.txt
-    - ls -la
     - ls /
-    - set
+    - #set
+    - choco install cygwin --params "/NoStartMenu"
+    - choco install cyg-get && /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget
+#    - echo 1 && ls -la && echo 2 && ls -la / && echo 3 && ls -la /c && echo 4 && ls -la /c/ProgramData && echo 5 && ls -la /c/ProgramData/chocolatey && echo 6 && ls -la /c/ProgramData/chocolatey/bin/ && echo 7 && ls -la /c/tools/cygwin/ && echo 8 && ls -la /c/tools/cygwin/bin
+    - ./setup-cygwin-packages.cmd
+    - ./test.cmd
