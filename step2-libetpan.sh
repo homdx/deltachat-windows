@@ -31,10 +31,10 @@ set +ex
 
 git clone --recursive https://github.com/dinhviethoa/libetpan.git
 mkdir libetpan/third-party1
-dos2unix src/low-level/smtp/mailsmtp.c
+git checkout -f libetpan/src/low-level/smtp/mailsmtp.c
+#dos2unix src/low-level/smtp/mailsmtp.c
 cp -vf libetpan-mailsmtp-cygwin.patch libetpan/
 cd libetpan/third-party1
-
 
 echo Download third-part
 wget --quiet http://d.etpan.org/mailcore2-deps/zlib-win32/zlib-win32-1.zip -O zlib-win32-1.zip
@@ -42,7 +42,6 @@ wget --quiet http://d.etpan.org/mailcore2-deps/misc-win32/openssl-1.0.1j-vs2013.
 wget --quiet http://d.etpan.org/mailcore2-deps/cyrus-sasl-win32/cyrus-sasl-win32-2.zip -O cyrus-sasl-win32-2.zip
 
 function checksum {
-
 echo 'Check sha256 sum'
 sha256cyrus=0e2ec45dee16e238947412b28c07e757951cfdaabba829c3caeca9e601850705
 sha256openssl=b1aac2fac317404783636e55a1c50a4cc61900ea0ee9198c7f2ded4a4d1500db

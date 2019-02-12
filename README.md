@@ -6,8 +6,8 @@ Progress bar
 
 * [x]  bzip
 * [x]  libetpan
-* [ ]  botan
-* [ ]  cmocka
+* [x]  botan
+* [x]  cmocka
 * [ ]  rnp
 * [ ]  netpgp
 * [ ]  main application

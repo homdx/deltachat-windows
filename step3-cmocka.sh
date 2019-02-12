@@ -6,13 +6,13 @@ DOT_HASH=43eabcf72a9c80e3d03f7c8a1c04e408c18d2db5121eb058a3ef732a9dfabfaf
 DOT_PATH=https://cmocka.org/files
 DOT_FILE=cmocka-1.1.3.tar.xz
 
-echo linux path
-echo $PATH
+#echo linux path
+#echo $PATH
 export PATH=/usr/bin:/usr/local/bin
-echo linux new path
-echo $PATH
-ls -la
-ls -la ..
+#echo linux new path
+#echo $PATH
+#ls -la
+#ls -la ..
 
 function download_check {
 
