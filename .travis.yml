@@ -1,26 +1,20 @@
 os: windows
 language: shell
 
-cache:
-  - install
-  - step1
-  - step2
-  - step3
-  - step4
-
-jobs:
-  include:
-    - stage: install
-      script: choco install cygwin --params "/NoStartMenu" && choco install cyg-get && /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel
-    - stage: step1
-    #- # stage name not required, will continue to use `step1`
-      script: ./setup-cygwin-packages.cmd
-    - stage: step2
-      script: ./travis-step3-cmocka.cmd
-    - stage: step3
-      script: ./travis-step2-libetpan.cmd
-      script: ./travis-step4-1-botan.cmd
-    - stage: step4
-      script: ./travis-step4-2-botan.cmd
+script:
+    - choco install cygwin --params "/NoStartMenu"
+    - choco install cyg-get 
+#&& /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel cmake-3.13.1
 # imake makedepend libarchive13 libcom_err2 libcurl4 libexpat1 libext2fs2 libgssapi_krb5_2 libjsoncpp19 libk5crypto3 libkrb5_3 libkrb5support0 liblz4_1 libnghttp2_14 libopenldap2_4_2 librhash0 libsasl2-devel libsasl2_3 libslang2 libsqlite3-devel libsqlite3_0 libssh2_1 libuv1 perl-TimeDate cmake
 #    - ls -la && echo 2 && ls -la / && echo 3 && ls -la /c && echo 4 && ls -la /c/ProgramData && echo 5 && ls -la /c/ProgramData/chocolatey && echo 6 && ls -la /c/ProgramData/chocolatey/bin/ && echo 7 && ls -la /c/tools/cygwin/ && echo 8 && ls -la /c/tools/cygwin/bin
+    - ./setup-cygwin-packages.cmd
+    - ./travis-step1-bzip.cmd    
+#    - ./travis-step2-libetpan.cmd
+    - ./travis-step3-cmocka.cmd
+    #git checkout return error 127 again run
+    - wget https://github.com/randombit/botan/archive/2.9.0.tar.gz && tar -xf 2.9.0.tar.gz
+    - ./travis-step4-1-botan.cmd
+    - ./travis-step4-2-botan.cmd
+    - wget https://github.com/riboseinc/rnp/archive/v0.12.0.tar.gz && tar -xf v0.12.0.tar.gz
+    - ./travis-step5-rnp.cmd
+

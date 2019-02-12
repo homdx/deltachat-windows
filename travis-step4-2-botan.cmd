@@ -8,5 +8,4 @@ dos2unix step4-2-botan.sh
 dir
 rem echo windows path
 rem cmd /c echo %path%
-sh step4-1-botan.sh
 sh step4-2-botan.sh

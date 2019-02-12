@@ -8,6 +8,7 @@ DOT_FILE=bzip2-1.0.6-3.src.tar.gz
 if [ $TRAVIS ]
 then
 echo "Travis run"
+mkdir -p travis/src
 cd travis/src
 set -ex
 time wget --quiet ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE} -O ${DOT_FILE} && \
