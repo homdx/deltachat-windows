@@ -6,8 +6,9 @@ if [ $TRAVIS ]
 then
 echo "Travis run. Change path env"
 export PATH=/usr/bin:/usr/local/bin:/usr/lib:/sbin:$PATH
-ls -la
 
+cd $TRAVIS_BUILD_DIR
+ls -la
 
 echo current cmake version
 cmake --version
@@ -17,10 +18,12 @@ rm cmake-3.13.1-1.tar.xz
 echo updated cmake version
 cmake --version
 
+tar -xf v0.12.0.tar.gz
 cd rnp-0.12.0
 ls -la
 else
 echo "No travis runing"
+
 fi
 
 mkdir build
