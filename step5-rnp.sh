@@ -26,7 +26,7 @@ fi
 mkdir build
 cd build
 echo start configure
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DBUILD_SHARED_LIBS=on -DBUILD_TESTING=off ..
 echo start build
 make
 echo start install
