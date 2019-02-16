@@ -8,7 +8,6 @@ echo "Travis run. Change path env"
 export PATH=/usr/bin:/usr/local/bin:/usr/lib:/sbin:$PATH
 
 cd $TRAVIS_BUILD_DIR
-ls -la
 
 echo current cmake version
 cmake --version
@@ -20,10 +19,11 @@ cmake --version
 
 tar -xf v0.12.0.tar.gz
 cd rnp-0.12.0
-ls -la
 else
 echo "No travis runing"
-
+git clone --recursive https://github.com/riboseinc/rnp.git
+cd rnp
+git checkout 586caec6cd728d54dbd281cafe17ee2e1f29dbf1
 fi
 
 mkdir build
