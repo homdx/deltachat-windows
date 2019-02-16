@@ -12,9 +12,9 @@ script:
 #    - ./travis-step2-libetpan.cmd
     - ./travis-step3-cmocka.cmd
     #git checkout return error 127 again run
-    - wget https://github.com/randombit/botan/archive/2.9.0.tar.gz && tar -xf 2.9.0.tar.gz
+    - wget https://github.com/randombit/botan/archive/2.9.0.tar.gz && tar -xf 2.9.0.tar.gz || /bin/true
     - ./travis-step4-1-botan.cmd
     - ./travis-step4-2-botan.cmd
-    - wget https://github.com/riboseinc/rnp/archive/v0.12.0.tar.gz && tar -xf v0.12.0.tar.gz
+    - wget https://github.com/riboseinc/rnp/archive/v0.12.0.tar.gz && tar -xf v0.12.0.tar.gz || /bin/true
     - ./travis-step5-rnp.cmd
     - /bin/true
