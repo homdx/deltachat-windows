@@ -11,6 +11,7 @@ make --version
 export PATH=/usr/bin:/usr/local/bin:$PATH
 echo "after patch make version"
 make --version
+cd $TRAVIS_BUILD_DIR
 cd botan-2.9.0
 else
 echo "No travis runing"
@@ -18,8 +19,6 @@ fi
 
 echo step4-2 current path list
 ls -la
-cd $TRAVIS_BUILD_DIR
-cd botan-2.9.0
 echo step4-2 changed path list
 ls -la
 echo configure for install botan and install
