@@ -11,8 +11,8 @@ cd $TRAVIS_BUILD_DIR
 
 echo current cmake version
 cmake --version
-wget http://mirrors.kernel.org/sourceware/cygwin/x86_64/release/cmake/cmake-3.13.1-1.tar.xz
-tar -xvf cmake-3.13.1-1.tar.xz -C /
+wget --quiet http://mirrors.kernel.org/sourceware/cygwin/x86_64/release/cmake/cmake-3.13.1-1.tar.xz
+tar -xf cmake-3.13.1-1.tar.xz -C /
 rm cmake-3.13.1-1.tar.xz
 echo updated cmake version
 cmake --version

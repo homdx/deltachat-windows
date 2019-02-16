@@ -3,13 +3,16 @@ language: shell
 
 script:
     - choco install cygwin --params "/NoStartMenu"
-    - choco install cyg-get 
+    - choco install cyg-get
+    - /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel
 #&& /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel cmake-3.13.1
 # imake makedepend libarchive13 libcom_err2 libcurl4 libexpat1 libext2fs2 libgssapi_krb5_2 libjsoncpp19 libk5crypto3 libkrb5_3 libkrb5support0 liblz4_1 libnghttp2_14 libopenldap2_4_2 librhash0 libsasl2-devel libsasl2_3 libslang2 libsqlite3-devel libsqlite3_0 libssh2_1 libuv1 perl-TimeDate cmake
 #    - ls -la && echo 2 && ls -la / && echo 3 && ls -la /c && echo 4 && ls -la /c/ProgramData && echo 5 && ls -la /c/ProgramData/chocolatey && echo 6 && ls -la /c/ProgramData/chocolatey/bin/ && echo 7 && ls -la /c/tools/cygwin/ && echo 8 && ls -la /c/tools/cygwin/bin
     - ./setup-cygwin-packages.cmd
     - ./travis-step1-bzip.cmd
+    - mkdir -pv /c/Code/libetpan && cd /c/Code/libetpan && git clone --recursive https://github.com/dinhviethoa/libetpan.git && cd $TRAVIS_BUILD_DIR
     - ./travis-step2-libetpan.cmd
+    - /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc doxygen libllvm5 libclang5 libedit0 libxapian30 cmake xz libjson-c-devel libuv1 librhash0 libjsoncpp19 zlib-devel python3 git
     - ./travis-step3-cmocka.cmd
     - wget https://github.com/randombit/botan/archive/2.9.0.tar.gz
     - ./travis-step4-1-botan.cmd
