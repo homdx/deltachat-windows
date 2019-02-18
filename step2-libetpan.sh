@@ -1,10 +1,21 @@
 #!/bin/bash
 
-
-export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:$PATH
+echo old version
+sh --version
+export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin
+echo new version
+sh --version
 
 mkdir -pv /cygdrive/c/Code/libetpan
+
+if [ $TRAVIS ]
+then
+echo "Travis run"
+cp -fv $TRAVIS_BUILD_DIR/libetpan-mailsmtp-cygwin.patch /cygdrive/c/Code/libetpan
+else
 cp -fv libetpan-mailsmtp-cygwin.patch /cygdrive/c/Code/libetpan
+fi
+
 cd /cygdrive/c/Code/libetpan
 
 function check_command {
@@ -29,6 +40,9 @@ check_command
 checkname=make
 check_command
 checkname=libtool
+check_command
+checkname=patch
+check_command
 
 echo cygwin make
 make --version
@@ -37,7 +51,7 @@ set +ex
 #wget https://github.com/dinhviethoa/libetpan/archive/1.9.3.tar.gz
 git config --list
 echo change crlf git config
-git config --global add core.autocrlf input
+git config --global core.autocrlf input
 git config --list
 #git submodule update --init --recursive
 
@@ -50,7 +64,7 @@ mkdir libetpan/third-party1
 dos2unix src/low-level/smtp/mailsmtp.c
 ls -la
 cp -vf libetpan-mailsmtp-cygwin.patch libetpan/
-cd libetpan && echo git checkout fcbe81e025c01fab1fb807a4aebf7291b3e65253 && cd ..
+cd libetpan && git checkout ab999253ead97e3d5a4a077a9ac756c1b2fabd71 && cd ..
 cd libetpan/third-party1
 ls -la
 
@@ -69,6 +83,13 @@ set -ex
 echo "$sha256cyrus  cyrus-sasl-win32-2.zip" | sha256sum -c && \
 echo "$sha256openssl  openssl-1.0.1j-vs2013.zip" | sha256sum -c && \
 echo "$sha256zlib  zlib-win32-1.zip"  | sha256sum -c && return 0 || echo CheckSum error or and Download error && exit 255
+}
+
+function checksum2 {
+echo 'Check sha256 sum'
+sha256libetpan=8f7fc8bfa13a7add929b834c7b2a13df7987a738d09073ce7164b33d6f150a63
+set -ex
+echo "$sha256libetpan  usr-local-libetpan.zip" | sha256sum -c && return 0 || echo CheckSum error or and Download error && exit 255
 }
 
 checksum
@@ -106,73 +127,34 @@ LANG=C ./autogen.sh
 # --with-sasl=/cygdrive/c/Code/libetan/third-party/include  --with-openssl=/cygdrive/c/Code/libetan/third-party/include --with-zlib=/cygdrive/c/Code/libetan/third-party/include
 
 #echo compile
-LANG=C ./configure --with-gnu-ld=yes --disable-iconv --disable-silent-rules --enable-shared=false --disable-threads
+LANG=C ./configure --enable-shared=false
 
-LANG=C make || echo search la files && find .  "*.la" -print
-sleep 15
-cat src/low-level/mime/.libs/libmime.la
-echo la convert to dos
-sleep 15
-find . -name \*.la|xargs dos2unix
-echo done dos2unix
-sleep 15
-dos2unix src/low-level/maildir/.libs/libmaildir.la
-
-
-dos2unix src/low-level/mh/.libs/libmh.la
-
-echo second make
-LANG=C make
-find . -name \*.la|xargs dos2unix
-sleep 15
-
-echo third make
-find . -name \*.la|xargs dos2unix
 LANG=C make
 
-echo fouth make
-LANG=C find . -name \*.la|xargs dos2unix
-make
+OUT=$?
+if [ $TRAVIS ] && [ $OUT -eq 0 ]
+then
+echo compiled without error
+else
+echo need precompiled version
+wget --quiet https://github.com/homdx/test-win-build/releases/download/0.0.1/usr-local-libetpan.zip -O usr-local-libetpan.zip
+checksum2
+set +ex
+if [ $TRAVIS ]
+then
+echo Travis run
+unzip -qo usr-local-libetpan.zip
+echo move predcompiled files to /usr/local
+cp -Rv local/ /usr/
+exit 0
+else
+echo No travis run
+fi
+fi
 
-echo five make
-LANG=C find . -name \*.la|xargs dos2unix
-make
+echo result status of make command is $OUT
 
-
-echo language is $LANG
-echo now first install
-make install
-
-sleep 15
-find . -name \*.la|xargs dos2unix
-echo done dos2unix
-sleep 15
-
-echo now second install
-make install
-
-sleep 15
-find . -name \*.la|xargs dos2unix
-echo done dos2unix
-sleep 15
-
-echo now third install
-make install
-
-sleep 15
-find . -name \*.la|xargs dos2unix
-echo done dos2unix
-sleep 15
-
-echo now fouth install
-make install
-
-sleep 15
-find . -name \*.la|xargs dos2unix
-echo done dos2unix
-sleep 15
-
-echo now five install
+echo now install
 make install
 
 echo status install of $?
