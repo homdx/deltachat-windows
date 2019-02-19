@@ -1,20 +1,7 @@
 [![Build Status](https://travis-ci.org/homdx/test-win-build.svg?branch=master)](https://travis-ci.org/homdx/test-win-build)
 
-Builder windows
+**Reproduce in your Windows env:**
 
-Progress bar
-
-* [x]  bzip
-* [x]  libetpan
-* [x]  botan
-* [x]  cmocka
-* [x]  rnp (OpenPGP library)
-* [ ]  meson
-* [ ]  ninja
-* [ ]  nodejs
-* [ ]  main application deltachat
-
-Reproduce in your Windows env:
 1. Setup https://chocolatey.org
 2. Setup Git to windows
 3. Setup Meson anb ninja from https://github.com/mesonbuild/meson/releases with msi
@@ -27,12 +14,14 @@ Reproduce in your Windows env:
 4. Setup in Cygwin with command cyg-get in Chocolatey with deps packages, defended on file [setup-cygwin-packages.cmd](setup-cygwin-packages.cmd)
 5. Run cygwin with: `c:\tools\cygwin\Cygwin.bat`
 6. Work with this repositories:
-
 ```
 git clone https://github.com/homdx/test-win-build
 cd test-win-build
 dos2unix *.sh
 chmod +x *.sh
+#setup Travis variables and paths
+export TRAVIS=true
+export TRAVIS_BUILD_DIR=~/test-win-build
 #reproduce all step: ./step1-bzip.sh ; ./step2-libetpan.sh and etc
 #if all done then
 ```
@@ -68,4 +57,16 @@ cd ~/test-win-build/deltachat-node/
 npm install
 ```
 
+Builder windows
 
+Progress bar for Travis-CI
+
+* [x]  bzip
+* [x]  libetpan
+* [x]  botan
+* [x]  cmocka
+* [x]  rnp (OpenPGP library)
+* [ ]  meson
+* [ ]  ninja
+* [ ]  nodejs
+* [ ]  main application deltachat
