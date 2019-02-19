@@ -17,6 +17,7 @@ rm cmake-3.13.1-1.tar.xz
 echo updated cmake version
 cmake --version
 
+wget --quiet https://github.com/riboseinc/rnp/archive/v0.12.0.tar.gz -O v0.12.0.tar.gz
 tar -xf v0.12.0.tar.gz
 cd rnp-0.12.0
 else

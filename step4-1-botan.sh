@@ -7,6 +7,7 @@ python3 --version
 export PATH=/usr/bin:/usr/local/bin:$PATH
 python3 --version
 cd $TRAVIS_BUILD_DIR
+wget --quiet https://github.com/randombit/botan/archive/2.9.0.tar.gz -O 2.9.0.tar.gz
 tar -xf 2.9.0.tar.gz 
 cd botan-2.9.0
 else
