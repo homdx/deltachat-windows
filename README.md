@@ -1,6 +1,8 @@
-[![Build Status](https://travis-ci.org/homdx/test-win-build.svg?branch=master)](https://travis-ci.org/homdx/test-win-build)
+[![Build Status](https://travis-ci.org/homdx/deltachat-windows.svg?branch=master)](https://travis-ci.org/homdx/deltachat-windows)
 
-**Reproduce in your Windows env:**
+DeltaChat Windows version builder and instruction (for manual build), with Travis-CI checker
+
+**Build and reproduce in your Windows ENV:**
 
 1. Setup https://chocolatey.org
 2. Setup Git to windows
@@ -57,8 +59,9 @@ cd ~/test-win-build/deltachat-node/
 npm install
 ```
 
-Builder windows
+This is project Builder Windows DeltaChat binary application
 
+----
 Progress bar for Travis-CI
 
 * [x]  bzip
@@ -70,3 +73,6 @@ Progress bar for Travis-CI
 * [ ]  ninja
 * [ ]  nodejs
 * [ ]  main application deltachat
+
+----
+New Dev version/unstable builder for Windows you can found at [homdx/test-win-buil](https://github.com/homdx/test-win-build)
