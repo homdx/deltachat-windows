@@ -9,6 +9,7 @@ script:
   - cd $TRAVIS_BUILD_DIR && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
   - cd $TRAVIS_BUILD_DIR/deltachat-desktop && npm run dist || true
   - cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
+  - cd $TRAVIS_BUILD_DIR && ls -la
 
 deploy:
   provider: releases
