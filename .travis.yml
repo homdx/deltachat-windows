@@ -2,14 +2,11 @@ os: windows
 language: shell
 
 script:
-  - choco install nodejs.install
-  - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
-  - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version
-  - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
-  - cd $TRAVIS_BUILD_DIR && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
-  - cd $TRAVIS_BUILD_DIR/deltachat-desktop && npm run dist || true
-  - cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
-  - cd $TRAVIS_BUILD_DIR && ls -la
+  - choco install nodejs.install aria2
+  - echo prepare for build && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
+  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
+  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
+  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
 
 deploy:
   provider: releases
