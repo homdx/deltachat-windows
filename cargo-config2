@@ -1,0 +1,2 @@
+[registry]
+index = "file:///C:/Users/travis/build/homdx/deltachat-windows/crates.io-index.git"
