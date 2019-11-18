@@ -52,7 +52,7 @@ if [ -z "$DISABLECACHE" ] ; \
     cd .. ; \
     git clone --recursive https://github.com/deltachat/deltachat-desktop ; \
     cd deltachat-desktop ; \
-    git checkout ca0460c5bf90a5ebb5bfe2aa794799030d8e23ca ; \
+    git checkout 931afdfe2aa78b977faf071c71c09cecc56dca9d ; \
     cd .. ; \
     echo 'git ready for build' ; \
     cd deltachat-node ; cargo --version ; cargo update --verbose ; cargo --version ; \
