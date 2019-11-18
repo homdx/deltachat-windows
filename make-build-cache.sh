@@ -48,7 +48,7 @@ if [ -z "$DISABLECACHE" ] ; \
     echo git latest sources ; \
     cd $TRAVIS_BUILD_DIR ; git clone https://github.com/deltachat/deltachat-node --recursive ; \
     cd deltachat-node ; \
-    git checkout 7a8e05d8f9af4cd62a7441b3acf311dad61f66c8 ; \
+    echo build master branch ; \
     cd .. ; \
     git clone --recursive https://github.com/deltachat/deltachat-desktop ; \
     cd deltachat-desktop ; \
