@@ -16,7 +16,8 @@ if [ -z "$DISABLECACHE" ] ; \
     ls -la ; \
     echo build electron ; \
     npx electron-builder --win portable ; \
-    ls -la ; \
+    echo done build electron ; \
+    ls -la dist; \
 fi
 }
 
