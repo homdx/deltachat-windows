@@ -13,6 +13,10 @@ if [ -z "$DISABLECACHE" ] ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     echo test deltachat windows ; \
     echo 'switch off for version 0.840 npm run test' ; \
+    ls -la ; \
+    echo build electron ; \
+    npx electron-builder --win portable ; \
+    ls -la ; \
 fi
 }
 
