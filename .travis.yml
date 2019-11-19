@@ -2,7 +2,7 @@ os: windows
 language: shell
 
 script:
-  - choco install nodejs.install aria2
+  - choco install nodejs-lts --version=10.16.0 && choco install aria2
   - echo prepare for build && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
   - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
   - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
