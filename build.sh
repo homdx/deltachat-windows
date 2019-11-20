@@ -28,7 +28,8 @@ exit 0
 
 function error_exit {
 echo 'error with make'
-ls -la dist
+ls -la $TRAVIS_BUILD_DIR/deltachat-desktop/dist
+echo 'endof ls dist'
 exit 255
 }
 
