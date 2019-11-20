@@ -1,3 +1,9 @@
+# deltachat-desktop
+
+**Desktop Application for [delta.chat](https://delta.chat)**
+
+<center><img src="https://raw.githubusercontent.com/deltachat/deltachat-desktop/master/README_ASSETS/screenshot.png"/></center>
+
 [![Build Status](https://travis-ci.org/homdx/deltachat-windows.svg?branch=master)](https://travis-ci.org/homdx/deltachat-windows)
 
 *DeltaChat Windows release and CI builder for Windows*
@@ -7,6 +13,9 @@ Download DeltaChat windows:
 https://github.com/homdx/deltachat-windows/releases
 
 
+
+*New*:
+Release builder for make setup version and onefile bundle version of deltachat desktop for windows
 
 **Reproduce in your Windows build env:**
 
@@ -37,4 +46,4 @@ If you want compile all from sources, without usage precompiled files with cache
 
 Progress bar for Travis-CI
 * [x]  main application deltachat (unpacked)
-* [ ]  main application deltachat (packed)
+* [x]  main application deltachat (packed)
