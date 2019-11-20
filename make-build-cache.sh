@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DOT_VERSION=test1
+export DOT_VERSION=v0.840.0
 export DOT_PATH=https://github.com/homdx/deltachat-windows/releases/download
 export DOT_FILE1=cargo.7z
 export DOT_FOLDER1="/c/Users/travis/.cargo"
