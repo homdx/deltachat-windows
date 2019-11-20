@@ -28,6 +28,7 @@ exit 0
 
 function error_exit {
 echo 'error with make'
+ls -la dist
 exit 255
 }
 
