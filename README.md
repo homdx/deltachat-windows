@@ -10,12 +10,16 @@
 
 Download DeltaChat windows:
 
+https://github.com/homdx/deltachat-windows/releases/download/v0.840.0/win-DeltaChat0.840.0.zip
+
+https://github.com/homdx/deltachat-windows/releases/download/v0.840.0/win-DeltaChatSetup0.840.0.zip
+
 https://github.com/homdx/deltachat-windows/releases
-
-
 
 *New*:
 Release builder for make setup version and onefile bundle version of deltachat desktop for windows
+
+
 
 **Reproduce in your Windows build env:**
 
