@@ -15,7 +15,7 @@ if [ -z "$DISABLECACHE" ] ; \
     echo 'switch off for version 0.840 npm run test' ; \
     ls -la ; \
     echo build electron ; \
-    npx electron-builder --win portable ; \
+    npx electron-builder --linux --win portable --mac mas ; \
     echo done build electron ; \
     ls -la dist; \
 fi
