@@ -12,7 +12,12 @@ if [ -z "$DISABLECACHE" ] ; \
     then echo 'Now enable Cached files for rust. If you not need cache build with: --build-arg DISABLECACHE=something'; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     echo test deltachat windows ; \
-    npm run test ; \
+    echo 'switch off for version 0.840 npm run test' ; \
+    ls -la ; \
+    echo build electron ; \
+    npx electron-builder --win portable ; \
+    echo done build electron ; \
+    ls -la dist; \
 fi
 }
 
@@ -23,6 +28,8 @@ exit 0
 
 function error_exit {
 echo 'error with make'
+ls -la $TRAVIS_BUILD_DIR/deltachat-desktop/dist
+echo 'endof ls dist'
 exit 255
 }
 

@@ -2,7 +2,7 @@ os: windows
 language: shell
 
 script:
-  - choco install nodejs.install aria2
+  - choco install nodejs-lts --version=10.16.0 && choco install aria2
   - echo prepare for build && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
   - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
   - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
@@ -14,6 +14,7 @@ deploy:
   api_key:
     secure: YC0nuOOrmtNZe5J7c3g2QeaqjK36eW0tb/Nv/oSXSaYAW3c5t0OPlkRlwZjXtqci21oQ9vxRfFXnCIPMAHg0eG2dejO66uKQ/4X42qTSluJ4PIIGiSAHO7KffL9CKRwJhK40lIlUacG6wvGNLJVfOV7jw57o1yCztI6AIR7THR9CvQ+8R1G7sB4XSKPCbQxRb1j6nHAzxXnrnv9L7zZK1yINd3gMmcOr2hiCUd6VR1Gijw3+mGtZ2Tuq0q06ikrFy6qB2sRAM6NpiAa7zQmSODX/G9qFsKq73JwVgDFSJ81roRRI69pZOBbYhVpeI03YyA6QxWNEmLuX0hn8pMpyokjW1wL+KXtbgtFdSJMFv6dixKMw+tLCNmq6/yzod7q0aNsQn1DmQdfmEh/g3fYbV5IlhwRlh7thyQAo8AkLYsDtXv/6GYy8tGJcyA1rp46tSTTonqv4ueZ5Pna7K0yKJ5z+dl8qyjc5vTWqdOLWJRjWFkHNB5Iq7nEqK5MKvTMNM4hQL3J+PbA37NJxUPkbQfKswx+Sagb0hB/L8DGxbc2oYfX93AUaD0z3o5Vro0bOgsC1+53iS7FpyOikwOWKFOJ/2wyDX95GCIUdFWWW5ytP9nairWAKbOO6uh/btP09qiPzgUc8mFQ+f5TcdQn0qRwfwopQxALOQ5O+cARlFwc=
   file:
+    - deltachat.zip
     - deltachat-win.zip
     - deltachat.zip
     - cargo.7z
@@ -26,3 +27,4 @@ deploy:
   draft: true
   on:
     repo: homdx/deltachat-windows
+    all_branches: true
