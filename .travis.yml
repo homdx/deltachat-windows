@@ -6,7 +6,7 @@ script:
   - echo prepare for build && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
   - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
   - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
-  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && ls -la && mv DeltaChat*.exe ../release/ && cd .. && 7z a -tzip -r deltachat.zip release/DeltaChat*.exe && mv deltachat.zip $TRAVIS_BUILD_DIR/
+  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv DeltaChat*.exe ../release/ && cd .. && 7z a -tzip -r deltachat.zip release/DeltaChat*.exe && mv deltachat.zip $TRAVIS_BUILD_DIR/
   - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
 
 deploy:
@@ -16,6 +16,7 @@ deploy:
   file:
     - deltachat.zip
     - deltachat-win.zip
+    - deltachat.zip
     - cargo.7z
     - rustup-arc.7z
     - deltachat-core-rust.7z
