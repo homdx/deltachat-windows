@@ -9,10 +9,9 @@
 *DeltaChat Windows release and CI builder for Windows*
 
 Download DeltaChat windows:
+https://github.com/homdx/deltachat-windows/releases/download/v0.900.0/deltachat-win.zip
 
-https://github.com/homdx/deltachat-windows/releases/download/v0.840.0/win-DeltaChat0.840.0.zip
-
-https://github.com/homdx/deltachat-windows/releases/download/v0.840.0/win-DeltaChatSetup0.840.0.zip
+https://github.com/homdx/deltachat-windows/releases/download/v0.900.0/deltachat.zip
 
 https://github.com/homdx/deltachat-windows/releases
 
@@ -21,14 +20,14 @@ Release builder for make setup version and onefile bundle version of deltachat d
 
 
 
-**Reproduce in your Windows build env:**
+**Reproduce in your Windows build env** (also for old builds too)
 
 1. Setup https://chocolatey.org
 2. Setup Git to windows
 
 `choco install nodejs.install aria2`
 
-3. 
+3. Commads for bash env windows:
 ```
    git clone https://github.com/homdx/deltachat-windows
    cd deltachat-windows
