@@ -40,7 +40,10 @@ if [ -z "$DISABLECACHE" ] ; \
     echo build Full version; \
     export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
     cd /c/ProgramData/chocolatey/bin ; \
-    wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe ; \
+    wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe ; \
+    ls -la *.exe ; \
+    chmod +x *.exe ; \
+    ls -la *.exe ; \
     ./rustup-init.exe -y --default-toolchain nightly ; \
     cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
     echo 'no copy only update cargo cp -pv cargo-config2 /c/Users/travis/.cargo/config' ; \
